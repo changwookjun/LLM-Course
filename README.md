@@ -1,4 +1,2 @@
-# LLM-Course
 
-
-The Large Language Model Course
+# The Large Language Model Course
