@@ -62,21 +62,60 @@ Pre-training is a computationally intensive and expensive process. While it’s 
 
 <a href="https://github.com/huggingface/nanotron">nanotron</a> by Hugging Face: Minimalistic LLM training codebase used to make <a href="https://github.com/huggingface/smollm">SmolLM2</a>.
 
-Parallel training by Chenyan Xiong: Overview of optimization and parallelism techniques.
+<a href="https://www.andrew.cmu.edu/course/11-667/lectures/W10L2%20Scaling%20Up%20Parallel%20Training.pdf">Parallel training</a>  by Chenyan Xiong: Overview of optimization and parallelism techniques.
 
-Distributed training by Duan et al.: A survey about efficient training of LLM on distributed architectures.
+<a href="https://arxiv.org/abs/2407.20018">Distributed training</a>  by Duan et al.: A survey about efficient training of LLM on distributed architectures.
 
-OLMo 2 by AI2: Open-source language model with model, data, training, and evaluation code.
+<a href="https://allenai.org/olmo">OLMo 2</a> by AI2: Open-source language model with model, data, training, and evaluation code.
 
-LLM360 by LLM360: A framework for open-source LLMs with training and data preparation code, data, metrics, and models.
-
-
+<a href="https://www.llm360.ai/">LLM360</a> by LLM360: A framework for open-source LLMs with training and data preparation code, data, metrics, and models.
 
 
+### 3. Post-training datasets:
+
+
+Post-training datasets have a precise structure with instructions and answers (supervised fine-tuning) or instructions and chosen/rejected answers (preference alignment). Conversational structures are a lot rarer than the raw text used for pre-training, which is why we often need to process seed data and refine it to improve the accuracy, diversity, and complexity of the samples. More information and examples are available in my repo <a href="https://github.com/mlabonne/llm-datasets">💾 LLM Datasets.</a>
 
 
 
+* Storage & chat templates: Because of the conversational structure, post-training datasets are stored in a specific format like ShareGPT or OpenAI/HF. Then, these formats are mapped to a chat template like ChatML or Alpaca to produce the final samples the model is trained on.
 
+* Synthetic data generation: Create instruction-response pairs based on seed data using frontier models like GPT-4o. This approach allows for flexible and scalable dataset creation with high-quality answers. Key considerations include designing diverse seed tasks and effective system prompts.
+
+* Data enhancement: Enhance existing samples using techniques like verified outputs (using unit tests or solvers), multiple answers with rejection sampling, Auto-Evol, Chain-of-Thought, Branch-Solve-Merge, personas, etc.
+
+* Quality filtering: Traditional techniques involve rule-based filtering, removing duplicates or near-duplicates (with MinHash or embeddings), and n-gram decontamination. Reward models and judge LLMs complement this step with fine-grained and customizable quality control.
+
+
+### 📚 References:
+
+<a href="https://huggingface.co/spaces/argilla/synthetic-data-generator">Synthetic Data Generator</a> by Argilla: Beginner-friendly way of building datasets using natural language in a Hugging Face space.
+
+<a href="https://github.com/mlabonne/llm-datasets">LLM Datasets</a>  by Maxime Labonne: Curated list of datasets and tools for post-training.
+
+<a href="https://github.com/NVIDIA/NeMo-Curator">NeMo-Curator</a>  by Nvidia: Dataset preparation and curation framework for pre and post-training data.
+
+<a href="https://distilabel.argilla.io/dev/sections/pipeline_samples/">Distilabel</a>  by Argilla: Framework to generate synthetic data. It also includes interesting reproductions of papers like UltraFeedback.
+
+<a href="https://github.com/MinishLab/semhash">Semhash</a> by MinishLab: Minimalistic library for near-deduplication and decontamination with a distilled embedding model.
+
+<a href="https://huggingface.co/docs/transformers/main/en/chat_templating">Chat Template</a>  by Hugging Face: Hugging Face’s documentation about chat templates.
+
+
+### 4. Supervised Fine-Tuning
+
+SFT turns base models into helpful assistants, capable of answering questions and following instructions. During this process, they learn how to structure answers and reactivate a subset of knowledge learned during pre-training. Instilling new knowledge is possible but superficial: it cannot be used to learn a completely new language. Always prioritize data quality over parameter optimization.
+
+* Training techniques: Full fine-tuning updates all model parameters but requires significant compute. Parameter-efficient fine-tuning techniques like LoRA and QLoRA reduce memory requirements by training a small number of adapter parameters while keeping base weights frozen. QLoRA combines 4-bit quantization with LoRA to reduce VRAM usage.
+
+* Training parameters: Key parameters include learning rate with schedulers, batch size, gradient accumulation, number of epochs, optimizer (like 8-bit AdamW), weight decay for regularization, and warmup steps for training stability. LoRA also adds three parameters: rank (typically 16–128), alpha (1–2x rank), and target modules.
+
+* Distributed training: Scale training across multiple GPUs using DeepSpeed or FSDP. DeepSpeed provides three ZeRO optimization stages with increasing levels of memory efficiency through state partitioning. Both methods support gradient checkpointing for memory efficiency.
+
+* Monitoring: Track training metrics including loss curves, learning rate schedules, and gradient norms. Monitor for common issues like loss spikes, gradient explosions, or performance degradation.
+
+
+### 📚 References:
 
 
 
