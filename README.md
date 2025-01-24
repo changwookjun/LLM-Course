@@ -137,7 +137,7 @@ Preference alignment is a second stage in the post-training pipeline, focused on
 
 * <a href="https://arxiv.org/abs/1707.06347">Proximal Policy Optimization</a> : Iteratively updates policy to maximize reward while staying close to initial behavior. It uses a reward model to score responses and requires careful tuning of hyperparameters including learning rate, batch size, and PPO clip range.
   
-Monitoring: In addition to SFT metrics, you want to maximize the margin between chosen and preferred answers. The accuracy should also gradually increase until it plateaus.
+* Monitoring: In addition to SFT metrics, you want to maximize the margin between chosen and preferred answers. The accuracy should also gradually increase until it plateaus.
 
 
 
