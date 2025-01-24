@@ -56,19 +56,19 @@ Pre-training is a computationally intensive and expensive process. While it’s 
 
 ### 📚 References:
 
-<a href="https://huggingface.co/spaces/HuggingFaceFW/blogpost-fineweb-v1">DFineWeb</a> by Penedo et al.: Article to recreate a large-scale dataset for LLM pretraining (15T), including FineWeb-Edu, a high-quality subset.
+* <a href="https://huggingface.co/spaces/HuggingFaceFW/blogpost-fineweb-v1">DFineWeb</a> by Penedo et al.: Article to recreate a large-scale dataset for LLM pretraining (15T), including FineWeb-Edu, a high-quality subset.
 
-<a href="https://www.together.ai/blog/redpajama-data-v2">RedPajama v2</a>  by Weber et al.: Another article and paper about a large-scale pre-training dataset with a lot of interesting quality filters.
+* <a href="https://www.together.ai/blog/redpajama-data-v2">RedPajama v2</a>  by Weber et al.: Another article and paper about a large-scale pre-training dataset with a lot of interesting quality filters.
 
-<a href="https://github.com/huggingface/nanotron">nanotron</a> by Hugging Face: Minimalistic LLM training codebase used to make <a href="https://github.com/huggingface/smollm">SmolLM2</a>.
+* <a href="https://github.com/huggingface/nanotron">nanotron</a> by Hugging Face: Minimalistic LLM training codebase used to make <a href="https://github.com/huggingface/smollm">SmolLM2</a>.
 
-<a href="https://www.andrew.cmu.edu/course/11-667/lectures/W10L2%20Scaling%20Up%20Parallel%20Training.pdf">Parallel training</a>  by Chenyan Xiong: Overview of optimization and parallelism techniques.
+* <a href="https://www.andrew.cmu.edu/course/11-667/lectures/W10L2%20Scaling%20Up%20Parallel%20Training.pdf">Parallel training</a>  by Chenyan Xiong: Overview of optimization and parallelism techniques.
 
-<a href="https://arxiv.org/abs/2407.20018">Distributed training</a>  by Duan et al.: A survey about efficient training of LLM on distributed architectures.
+* <a href="https://arxiv.org/abs/2407.20018">Distributed training</a>  by Duan et al.: A survey about efficient training of LLM on distributed architectures.
 
-<a href="https://allenai.org/olmo">OLMo 2</a> by AI2: Open-source language model with model, data, training, and evaluation code.
+* <a href="https://allenai.org/olmo">OLMo 2</a> by AI2: Open-source language model with model, data, training, and evaluation code.
 
-<a href="https://www.llm360.ai/">LLM360</a> by LLM360: A framework for open-source LLMs with training and data preparation code, data, metrics, and models.
+* <a href="https://www.llm360.ai/">LLM360</a> by LLM360: A framework for open-source LLMs with training and data preparation code, data, metrics, and models.
 
 
 ### 3. Post-training datasets:
@@ -89,17 +89,17 @@ Post-training datasets have a precise structure with instructions and answers (s
 
 ### 📚 References:
 
-<a href="https://huggingface.co/spaces/argilla/synthetic-data-generator">Synthetic Data Generator</a> by Argilla: Beginner-friendly way of building datasets using natural language in a Hugging Face space.
+* <a href="https://huggingface.co/spaces/argilla/synthetic-data-generator">Synthetic Data Generator</a> by Argilla: Beginner-friendly way of building datasets using natural language in a Hugging Face space.
 
-<a href="https://github.com/mlabonne/llm-datasets">LLM Datasets</a>  by Maxime Labonne: Curated list of datasets and tools for post-training.
+* <a href="https://github.com/mlabonne/llm-datasets">LLM Datasets</a>  by Maxime Labonne: Curated list of datasets and tools for post-training.
 
-<a href="https://github.com/NVIDIA/NeMo-Curator">NeMo-Curator</a>  by Nvidia: Dataset preparation and curation framework for pre and post-training data.
+* <a href="https://github.com/NVIDIA/NeMo-Curator">NeMo-Curator</a>  by Nvidia: Dataset preparation and curation framework for pre and post-training data.
 
-<a href="https://distilabel.argilla.io/dev/sections/pipeline_samples/">Distilabel</a>  by Argilla: Framework to generate synthetic data. It also includes interesting reproductions of papers like UltraFeedback.
+* <a href="https://distilabel.argilla.io/dev/sections/pipeline_samples/">Distilabel</a>  by Argilla: Framework to generate synthetic data. It also includes interesting reproductions of papers like UltraFeedback.
 
-<a href="https://github.com/MinishLab/semhash">Semhash</a> by MinishLab: Minimalistic library for near-deduplication and decontamination with a distilled embedding model.
+* <a href="https://github.com/MinishLab/semhash">Semhash</a> by MinishLab: Minimalistic library for near-deduplication and decontamination with a distilled embedding model.
 
-<a href="https://huggingface.co/docs/transformers/main/en/chat_templating">Chat Template</a>  by Hugging Face: Hugging Face’s documentation about chat templates.
+* <a href="https://huggingface.co/docs/transformers/main/en/chat_templating">Chat Template</a>  by Hugging Face: Hugging Face’s documentation about chat templates.
 
 
 ### 4. Supervised Fine-Tuning
@@ -117,10 +117,74 @@ SFT turns base models into helpful assistants, capable of answering questions an
 
 ### 📚 References:
 
+* <a href="https://huggingface.co/blog/mlabonne/sft-llama3">Fine-tune Llama 3.1 Ultra-Efficiently with Unsloth</a>  by Maxime Labonne: Hands-on tutorial on how to fine-tune a Llama 3.1 model using Unsloth.
+
+* <a href="https://axolotl-ai-cloud.github.io/axolotl/">Axolotl — Documentation</a>  by Wing Lian: Lots of interesting information related to distributed training and dataset formats.
+
+* <a href="https://parlance-labs.com/education/">Mastering LLMs</a>  by Hamel Husain: Collection of educational resources about fine-tuning (but also RAG, evaluation, applications, and prompt engineering).
+
+* <a href="https://lightning.ai/pages/community/lora-insights/">LoRA insights</a> by Sebastian Raschka: Practical insights about LoRA and how to select the best parameters.
+
+
+### 5. Preference Alignment
+
+Preference alignment is a second stage in the post-training pipeline, focused on aligning generated answers with human preferences. This stage was designed to tune the tone of LLMs and reduce toxicity and hallucinations. However, it has become increasingly important to also boost their performance and improve usefulness. Unlike SFT, there are many preference alignment algorithms. Here, we’ll focus on the two most important ones: DPO and PPO.
+
+
+* Rejection sampling: For each prompt, use the trained model to generate multiple responses, and score them to infer chosen/rejected answers. This creates on-policy data, where both responses come from the model being trained, improving alignment stability.
+  
+* <a href="https://arxiv.org/abs/2305.18290">Direct Preference Optimization</a>  Directly optimizes the policy to maximize the likelihood of chosen responses over rejected ones. It doesn’t require reward modeling, which makes it more computationally efficient than PPO but slightly worse in terms of quality.
+
+* <a href="https://arxiv.org/abs/1707.06347">Proximal Policy Optimization</a> : Iteratively updates policy to maximize reward while staying close to initial behavior. It uses a reward model to score responses and requires careful tuning of hyperparameters including learning rate, batch size, and PPO clip range.
+  
+Monitoring: In addition to SFT metrics, you want to maximize the margin between chosen and preferred answers. The accuracy should also gradually increase until it plateaus.
+
+
+
+### 📚 References:
+
+Illustrating RLHF by Hugging Face: Introduction to RLHF with reward model training and fine-tuning with reinforcement learning.
+
+LLM Training: RLHF and Its Alternatives by Sebastian Rashcka: Overview of the RLHF process and alternatives like RLAIF.
+
+Preference Tuning LLMs by Hugging Face: Comparison of the DPO, IPO, and KTO algorithms to perform preference alignment.
+
+Fine-tune Mistral-7b with DPO by Maxime Labonne: Tutorial to fine-tune a Mistral-7b model with DPO and reproduce NeuralHermes-2.5.
+
+DPO Wandb logs by Alexander Vishnevskiy: It shows you the main metrics to track and the trends you should expect.
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
 <img src="./image/2.png"> 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
